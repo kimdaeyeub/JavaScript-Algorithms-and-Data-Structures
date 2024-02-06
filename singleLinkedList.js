@@ -96,6 +96,16 @@ class SingleLinkedList {
     }
     return current;
   }
+
+  // 특정 index에 해당하는 값 수정
+  set(index, val) {
+    const foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
+  }
 }
 
 const list = new SingleLinkedList();
@@ -104,4 +114,5 @@ list.push("Hi");
 list.push("Bye");
 list.push("KIM");
 list.push("DAE");
-console.log(list.get(-1));
+console.log(list.set(1, "안녕"));
+console.log(list);
