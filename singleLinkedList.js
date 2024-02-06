@@ -84,11 +84,24 @@ class SingleLinkedList {
     this.length++;
     return this;
   }
+
+  // 해당 index에 속하는 요소를 반환하는 메서드
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let counter = 0;
+    let current = this.head;
+    while (counter !== index) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+  }
 }
 
 const list = new SingleLinkedList();
 list.push("Hello");
 list.push("Hi");
 list.push("Bye");
-list.unshift("KIM");
-console.log(list);
+list.push("KIM");
+list.push("DAE");
+console.log(list.get(-1));
