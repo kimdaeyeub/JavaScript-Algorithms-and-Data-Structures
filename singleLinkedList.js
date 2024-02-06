@@ -56,14 +56,24 @@ class SingleLinkedList {
     }
     return current;
   }
+
+  shift() {
+    if (!this.head) return undefined;
+    let currentHead = this.head;
+    this.head = currentHead.next;
+    this.length--;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return currentHead;
+  }
 }
 
 const list = new SingleLinkedList();
 list.push("Hello");
 list.push("Hi");
 list.push("Bye");
-list.pop();
-list.pop();
-list.pop();
-list.pop();
+list.shift();
+list.shift();
+list.shift();
 console.log(list);
