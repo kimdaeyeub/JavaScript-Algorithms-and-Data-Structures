@@ -12,6 +12,7 @@ class SingleLinkedList {
     this.length = 0;
   }
 
+  // 새로운 요소를 추가
   push(val) {
     const newNode = new Node(val);
     if (!this.head) {
@@ -35,6 +36,7 @@ class SingleLinkedList {
   //   }
   // }
 
+  // 마지막 요소를 제거
   pop() {
     // 연결 리스트가 비었다면 pop메서드를 실행할 수 없다.
     if (!this.head) return undefined;
@@ -57,6 +59,7 @@ class SingleLinkedList {
     return current;
   }
 
+  // 첫번째 요소를 제거
   shift() {
     if (!this.head) return undefined;
     let currentHead = this.head;
@@ -67,13 +70,25 @@ class SingleLinkedList {
     }
     return currentHead;
   }
+
+  // 리스트의 제일 앞에 요소 추가하기
+  unshift(val) {
+    const newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 const list = new SingleLinkedList();
 list.push("Hello");
 list.push("Hi");
 list.push("Bye");
-list.shift();
-list.shift();
-list.shift();
+list.unshift("KIM");
 console.log(list);
