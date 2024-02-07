@@ -106,6 +106,20 @@ class SingleLinkedList {
     }
     return false;
   }
+
+  // 특정 인덱스에 해당 값을 삽입
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return this.push(val);
+    if (index === 0) return this.unshift(val);
+    const newNode = new Node(val);
+    let prev = this.get(index - 1);
+    let temp = prev.next;
+    prev.next = newNode;
+    newNode.next = temp;
+    this.length++;
+    return true;
+  }
 }
 
 const list = new SingleLinkedList();
@@ -114,5 +128,6 @@ list.push("Hi");
 list.push("Bye");
 list.push("KIM");
 list.push("DAE");
-console.log(list.set(1, "안녕"));
+list.push("안녕");
+list.insert(2, "asdasd");
 console.log(list);
